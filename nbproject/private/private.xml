@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Kuliah/Semester%202/Algoritma%20&amp;%20Pemograman%202/bolsu/src/alpro2/HomeScreen.java</file>
+<<<<<<< HEAD
+            <file>file:/D:/Kuliah/Semester%202/Alpro2/bolsu/src/alpro2/ProductOrder.java</file>
+            <file>file:/D:/Kuliah/Semester%202/Alpro2/bolsu/src/alpro2/LoginScreen.java</file>
+=======
+            <file>file:/Users/ihsanfrr/NetBeansProjects/BOLSU/src/alpro2/BOLSU.java</file>
+            <file>file:/Users/ihsanfrr/NetBeansProjects/BOLSU/src/alpro2/AuthenticationScreen.java</file>
+>>>>>>> e32664b25e56b51e2b27443d5e7b200396b9965b
         </group>
     </open-files>
 </project-private>
