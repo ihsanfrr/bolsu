@@ -77,7 +77,7 @@ public class AuthenticationScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-//        Connection conn = (Connection)Database.connect();
+        Connection conn = (Connection)Database.connect();
         
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -85,12 +85,8 @@ public class AuthenticationScreen extends javax.swing.JFrame {
         String query = "SELECT * FROM `users` WHERE username = '"+username+"' AND password = '"+password+"'";
         
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
             
-            String mysqlURL = "jdbc:mysql://localhost:8889/bolsu_db";
-            
-            // Catatan untuk windows default username="root" dan password=""
-            Connection conn = (Connection) DriverManager.getConnection(mysqlURL, "root", "root");
+          
             Statement statement = conn.createStatement();
 
             ResultSet rs = statement.executeQuery(query);
@@ -106,7 +102,7 @@ public class AuthenticationScreen extends javax.swing.JFrame {
             
             statement.closeOnCompletion();
             conn.close();
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(AuthenticationScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
