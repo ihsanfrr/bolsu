@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -28,7 +30,8 @@ public class AuthenticationScreen extends javax.swing.JFrame {
      */
     public AuthenticationScreen() {
         initComponents();
-        
+        ImageIcon img = new ImageIcon("C:\\Users\\Adit\\Desktop\\javasql\\bolsu\\src\\assets\\icon/Apples_Plate.png");
+        this.setIconImage(img.getImage());
         con = Database.connect();
         
     
@@ -46,6 +49,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jusername = new javax.swing.JTextField();
         jpass = new javax.swing.JPasswordField();
@@ -71,33 +77,50 @@ public class AuthenticationScreen extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Management App");
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Bread Crumbs.png"))); // NOI18N
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Christmas Candy.png"))); // NOI18N
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Cotton Candy.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel7)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(11, 11, 11)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(11, 11, 11))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jLabel5)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(157, 157, 157)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 191, 115));
@@ -139,6 +162,11 @@ public class AuthenticationScreen extends javax.swing.JFrame {
         jpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jpassActionPerformed(evt);
+            }
+        });
+        jpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jpassKeyPressed(evt);
             }
         });
 
@@ -288,7 +316,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
            
                 if (rs.next()) 
                 {
-                  JOptionPane.showMessageDialog(rootPane,"Masuk Berhasil!");  
+                   HomeScreen hs = new HomeScreen();
+                    hs.setVisible(true);
+                    setVisible(false); 
                 }
                 else
                 {
@@ -343,6 +373,37 @@ public class AuthenticationScreen extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
+    private void jpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpassKeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+        String un = jusername.getText();
+        String ps = jpass.getText();
+
+        try 
+        {
+           String sql = " SELECT * FROM users WHERE username=? AND password=?";
+           pst = con.prepareCall(sql);
+           pst.setString(1, un);
+           pst.setString(2, ps);
+           rs= pst.executeQuery();
+           
+                if (rs.next()) 
+                {
+                   HomeScreen hs = new HomeScreen();
+                    hs.setVisible(true);
+                    setVisible(false);  
+                }
+                else
+                {
+                  JOptionPane.showMessageDialog(rootPane,"Username atau Password anda salah"); 
+                }
+        }
+        catch (Exception e)
+        {
+        }// TODO add your
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_jpassKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -375,8 +436,12 @@ public class AuthenticationScreen extends javax.swing.JFrame {
             new AuthenticationScreen().setVisible(true);
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
