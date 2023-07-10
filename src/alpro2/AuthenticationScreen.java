@@ -316,7 +316,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
            
                 if (rs.next()) 
                 {
-                  JOptionPane.showMessageDialog(rootPane,"Masuk Berhasil!");  
+                   HomeScreen hs = new HomeScreen();
+                    hs.setVisible(true);
+                    setVisible(false); 
                 }
                 else
                 {
@@ -387,7 +389,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
            
                 if (rs.next()) 
                 {
-                  JOptionPane.showMessageDialog(rootPane,"Masuk Berhasil!");  
+                   HomeScreen hs = new HomeScreen();
+                    hs.setVisible(true);
+                    setVisible(false);  
                 }
                 else
                 {
