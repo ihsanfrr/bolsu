@@ -4,12 +4,23 @@
  */
 package alpro2;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nurai
  */
 public class ProductOrder extends javax.swing.JFrame {
 
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
     /**
      * Creates new form ProductOrder
      */
@@ -336,7 +347,20 @@ public class ProductOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_TFVActionPerformed
 
     private void BSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSimpanActionPerformed
-        // TODO add your handling code here:
+       try {
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO order_details (order_id, product_id, quantity, subtotal, created_at, update_at)values (?, ?, ?, ?, ?, ?)");
+            statement.setNull(1, Integer.parseInt(TFID.getText()));
+            statement.setString(2, TFName.getText());
+            statement.setInt(3, Integer.parseInt(jTextField3.getText()));
+            statement.setInt(4, Integer.parseInt(jTextField4.getText()));
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan", "Selamat!", JOptionPane.INFORMATION_MESSAGE);
+            Clear();
+            
+           } catch (SQLException ex) {
+            Logger.getLogger(FormUtama.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                // TODO add your handling code here:
     }//GEN-LAST:event_BSimpanActionPerformed
 
     private void BCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelActionPerformed
