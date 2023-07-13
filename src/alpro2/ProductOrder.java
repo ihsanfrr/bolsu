@@ -68,7 +68,8 @@ public class ProductOrder extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 191, 115));
 
         TFNo.setBackground(new java.awt.Color(0, 191, 115));
-        TFNo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFNo.setForeground(new java.awt.Color(255, 255, 255));
+        TFNo.setText("Masukkan No. Telp");
         TFNo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +80,8 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Number Pad.png"))); // NOI18N
 
         TFS.setBackground(new java.awt.Color(0, 191, 115));
-        TFS.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFS.setForeground(new java.awt.Color(255, 255, 255));
+        TFS.setText("qty Strawberry");
         TFS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +90,8 @@ public class ProductOrder extends javax.swing.JFrame {
         });
 
         TFID.setBackground(new java.awt.Color(0, 191, 115));
-        TFID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFID.setForeground(new java.awt.Color(255, 255, 255));
+        TFID.setText("Masukkan ID Transaction");
         TFID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +100,8 @@ public class ProductOrder extends javax.swing.JFrame {
         });
 
         TFName.setBackground(new java.awt.Color(0, 191, 115));
-        TFName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFName.setForeground(new java.awt.Color(255, 255, 255));
+        TFName.setText("Masukkan nama customer");
         TFName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +117,8 @@ public class ProductOrder extends javax.swing.JFrame {
 
         TFC.setEditable(false);
         TFC.setBackground(new java.awt.Color(0, 191, 115));
-        TFC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFC.setForeground(new java.awt.Color(255, 255, 255));
+        TFC.setText("qty Chocolate");
         TFC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +129,8 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Chocolate Bar.png"))); // NOI18N
 
         TFV.setBackground(new java.awt.Color(0, 191, 115));
-        TFV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFV.setForeground(new java.awt.Color(255, 255, 255));
+        TFV.setText("qty Vanilla");
         TFV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,9 +146,7 @@ public class ProductOrder extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        BSimpan.setBackground(new java.awt.Color(255, 255, 255));
         BSimpan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BSimpan.setForeground(new java.awt.Color(0, 0, 0));
         BSimpan.setText("Simpan");
         BSimpan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BSimpan.setContentAreaFilled(false);
@@ -152,9 +156,7 @@ public class ProductOrder extends javax.swing.JFrame {
             }
         });
 
-        BCancel.setBackground(new java.awt.Color(255, 255, 255));
         BCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BCancel.setForeground(new java.awt.Color(0, 0, 0));
         BCancel.setText("Cancel");
         BCancel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BCancel.setContentAreaFilled(false);
@@ -164,21 +166,17 @@ public class ProductOrder extends javax.swing.JFrame {
             }
         });
 
-        BCetak.setBackground(new java.awt.Color(255, 255, 255));
         BCetak.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BCetak.setForeground(new java.awt.Color(0, 0, 0));
         BCetak.setText("Cetak");
         BCetak.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BCetak.setContentAreaFilled(false);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Bola Susu Aima");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Bread Crumbs.png"))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Management App");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Cotton Candy.png"))); // NOI18N
@@ -300,8 +298,8 @@ public class ProductOrder extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TFC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(TFV))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel12)
@@ -336,7 +334,18 @@ public class ProductOrder extends javax.swing.JFrame {
 
     private void BSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSimpanActionPerformed
         try {
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO order_details (order_id, product_id, quantity, subtotal, created_at, update_at)values (?, ?, ?, ?, ?, ?)");
+            // INSERT TO ORDER
+            PreparedStatement statement = con.prepareStatement("INSERT INTO orders(id, user_id, order_date, buyer_name, buyer_telp, total_amount, status, created_at, updated_at)values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+             statement.setNull(1, Integer.parseInt(TFID.getText()));
+            statement.setString(2, TFID.getText());
+            statement.setInt(3, Integer.parseInt(jTextField3.getText()));
+            statement.setString(4, TFName.getText()));
+            statement.setInt(5, TFNo.getText()));
+
+            // Ambil ID order
+            
+            //
+            PreparedStatement statement = con.prepareStatement("INSERT INTO order_details (order_id, product_id, quantity, subtotal, created_at, update_at)values (?, ?, ?, ?, ?, ?)");
             statement.setNull(1, Integer.parseInt(TFID.getText()));
             statement.setString(2, TFName.getText());
             statement.setInt(3, Integer.parseInt(jTextField3.getText()));
