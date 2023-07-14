@@ -29,21 +29,121 @@ public class HomeScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        orderProduct = new javax.swing.JButton();
+        manageStock = new javax.swing.JButton();
+        orderHistory = new javax.swing.JButton();
+        salesReport = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setText("Halo Kasir!");
+
+        jLabel2.setText("Selamat menjalankan tugas Anda dengan baik!");
+
+        orderProduct.setBackground(new java.awt.Color(0, 191, 115));
+        orderProduct.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        orderProduct.setForeground(new java.awt.Color(255, 255, 255));
+        orderProduct.setText("Order Produk");
+        orderProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderProductActionPerformed(evt);
+            }
+        });
+
+        manageStock.setBackground(new java.awt.Color(0, 191, 115));
+        manageStock.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        manageStock.setForeground(new java.awt.Color(255, 255, 255));
+        manageStock.setText("Kelola Stok");
+        manageStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageStockActionPerformed(evt);
+            }
+        });
+
+        orderHistory.setBackground(new java.awt.Color(0, 191, 115));
+        orderHistory.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        orderHistory.setForeground(new java.awt.Color(255, 255, 255));
+        orderHistory.setText("Riwayat Penjualan");
+        orderHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderHistoryActionPerformed(evt);
+            }
+        });
+
+        salesReport.setBackground(new java.awt.Color(0, 191, 115));
+        salesReport.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        salesReport.setForeground(new java.awt.Color(255, 255, 255));
+        salesReport.setText("Laporan Penjualan");
+        salesReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesReportActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salesReport)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(orderProduct)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(manageStock)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(orderHistory))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderProduct)
+                    .addComponent(manageStock)
+                    .addComponent(orderHistory))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(salesReport)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderProductActionPerformed
+        ProductOrder po = new ProductOrder();
+        po.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_orderProductActionPerformed
+
+    private void manageStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockActionPerformed
+        StockManagementScreen sm = new StockManagementScreen();
+        sm.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_manageStockActionPerformed
+
+    private void orderHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderHistoryActionPerformed
+        OrderHistoryScreen oh = new OrderHistoryScreen();
+        oh.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_orderHistoryActionPerformed
+
+    private void salesReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesReportActionPerformed
+        SalesReportScreen sp = new SalesReportScreen();
+        sp.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_salesReportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +181,11 @@ public class HomeScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton manageStock;
+    private javax.swing.JButton orderHistory;
+    private javax.swing.JButton orderProduct;
+    private javax.swing.JButton salesReport;
     // End of variables declaration//GEN-END:variables
 }
