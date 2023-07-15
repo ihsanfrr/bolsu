@@ -10,11 +10,22 @@ package alpro2;
  */
 public class OrderHistoryScreen extends javax.swing.JFrame {
 
+    private int id;
+    private String username;
     /**
      * Creates new form OrderHistoryScreen
+     * @param id
+     * @param username
      */
-    public OrderHistoryScreen() {
+    public OrderHistoryScreen(int id, String username) {
+        this.id = id;
+        this.username = username;
+        
         initComponents();
+    }
+
+    private OrderHistoryScreen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -70,10 +81,8 @@ public class OrderHistoryScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new OrderHistoryScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new OrderHistoryScreen().setVisible(true);
         });
     }
 

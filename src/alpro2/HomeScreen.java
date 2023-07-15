@@ -12,12 +12,26 @@ package alpro2;
 >>>>>>> e32664b25e56b51e2b27443d5e7b200396b9965b
  */
 public class HomeScreen extends javax.swing.JFrame {
+    
+    private int id;
+    private String username;
 
     /**
      * Creates new form HomeScreen
+     * @param id
+     * @param username
      */
-    public HomeScreen() {
+    public HomeScreen(int id, String username) {
+        this.id = id;
+        this.username = username;
+        
         initComponents();
+        
+        greetingText.setText("Halo "+username+"!");
+    }
+
+    private HomeScreen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -29,7 +43,7 @@ public class HomeScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        greetingText = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         orderProduct = new javax.swing.JButton();
         manageStock = new javax.swing.JButton();
@@ -38,14 +52,13 @@ public class HomeScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel1.setText("Halo Kasir!");
+        greetingText.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        greetingText.setText("Halo Kasir!");
 
         jLabel2.setText("Selamat menjalankan tugas Anda dengan baik!");
 
         orderProduct.setBackground(new java.awt.Color(0, 191, 115));
         orderProduct.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        orderProduct.setForeground(new java.awt.Color(255, 255, 255));
         orderProduct.setText("Order Produk");
         orderProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +68,6 @@ public class HomeScreen extends javax.swing.JFrame {
 
         manageStock.setBackground(new java.awt.Color(0, 191, 115));
         manageStock.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        manageStock.setForeground(new java.awt.Color(255, 255, 255));
         manageStock.setText("Kelola Stok");
         manageStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +77,6 @@ public class HomeScreen extends javax.swing.JFrame {
 
         orderHistory.setBackground(new java.awt.Color(0, 191, 115));
         orderHistory.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        orderHistory.setForeground(new java.awt.Color(255, 255, 255));
         orderHistory.setText("Riwayat Penjualan");
         orderHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +86,6 @@ public class HomeScreen extends javax.swing.JFrame {
 
         salesReport.setBackground(new java.awt.Color(0, 191, 115));
         salesReport.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        salesReport.setForeground(new java.awt.Color(255, 255, 255));
         salesReport.setText("Laporan Penjualan");
         salesReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,14 +108,14 @@ public class HomeScreen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(orderHistory))
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(greetingText))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addComponent(greetingText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(36, 36, 36)
@@ -119,28 +129,29 @@ public class HomeScreen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void orderProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderProductActionPerformed
-        ProductOrder po = new ProductOrder();
+        ProductOrder po = new ProductOrder(id, username);
         po.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_orderProductActionPerformed
 
     private void manageStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockActionPerformed
-        StockManagementScreen sm = new StockManagementScreen();
+        StockManagementScreen sm = new StockManagementScreen(id, username);
         sm.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_manageStockActionPerformed
 
     private void orderHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderHistoryActionPerformed
-        OrderHistoryScreen oh = new OrderHistoryScreen();
+        OrderHistoryScreen oh = new OrderHistoryScreen(id, username);
         oh.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_orderHistoryActionPerformed
 
     private void salesReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesReportActionPerformed
-        SalesReportScreen sp = new SalesReportScreen();
+        SalesReportScreen sp = new SalesReportScreen(id, username);
         sp.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_salesReportActionPerformed
@@ -173,15 +184,13 @@ public class HomeScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new HomeScreen().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel greetingText;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton manageStock;
     private javax.swing.JButton orderHistory;

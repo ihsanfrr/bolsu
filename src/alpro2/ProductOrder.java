@@ -21,12 +21,24 @@ public class ProductOrder extends javax.swing.JFrame {
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
+    
+    private int id;
+    private String username;
     /**
      * Creates new form ProductOrder
+     * @param id
+     * @param username
      */
-    public ProductOrder() {
+    public ProductOrder(int id, String username) {
+        this.id = id;
+        this.username = username;
+        
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    private ProductOrder() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -62,6 +74,7 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,9 +153,7 @@ public class ProductOrder extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        BSimpan.setBackground(new java.awt.Color(255, 255, 255));
         BSimpan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BSimpan.setForeground(new java.awt.Color(0, 0, 0));
         BSimpan.setText("Simpan");
         BSimpan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BSimpan.setContentAreaFilled(false);
@@ -152,9 +163,7 @@ public class ProductOrder extends javax.swing.JFrame {
             }
         });
 
-        BCancel.setBackground(new java.awt.Color(255, 255, 255));
         BCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BCancel.setForeground(new java.awt.Color(0, 0, 0));
         BCancel.setText("Cancel");
         BCancel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BCancel.setContentAreaFilled(false);
@@ -164,21 +173,17 @@ public class ProductOrder extends javax.swing.JFrame {
             }
         });
 
-        BCetak.setBackground(new java.awt.Color(255, 255, 255));
         BCetak.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BCetak.setForeground(new java.awt.Color(0, 0, 0));
         BCetak.setText("Cetak");
         BCetak.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BCetak.setContentAreaFilled(false);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Bola Susu Aima");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Bread Crumbs.png"))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Management App");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Cotton Candy.png"))); // NOI18N
@@ -192,7 +197,7 @@ public class ProductOrder extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
@@ -238,46 +243,59 @@ public class ProductOrder extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/back-arrow-white.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 73, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel12))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(TFC, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TFS, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TFV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(TFID, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(TFName))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(TFNo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(107, 107, 107)))
-                .addGap(65, 65, 65)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 63, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel13)
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel12))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(TFC, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TFS, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TFV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(TFID, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(TFName))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(TFNo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(107, 107, 107)))
+                        .addGap(65, 65, 65))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(TFID, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -307,7 +325,7 @@ public class ProductOrder extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -319,7 +337,7 @@ public class ProductOrder extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -375,6 +393,12 @@ public class ProductOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFIDActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        HomeScreen hs = new HomeScreen(id, username);
+        hs.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -403,10 +427,8 @@ public class ProductOrder extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProductOrder().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ProductOrder().setVisible(true);
         });
     }
 
@@ -420,6 +442,7 @@ public class ProductOrder extends javax.swing.JFrame {
     private javax.swing.JTextField TFNo;
     private javax.swing.JTextField TFS;
     private javax.swing.JTextField TFV;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

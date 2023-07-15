@@ -10,11 +10,22 @@ package alpro2;
  */
 public class SalesReportScreen extends javax.swing.JFrame {
 
+    private int id;
+    private String username;
     /**
      * Creates new form SalesReportScreen
+     * @param id
+     * @param username
      */
-    public SalesReportScreen() {
+    public SalesReportScreen(int id, String username) {
+        this.id = id;
+        this.username = username;
+        
         initComponents();
+    }
+
+    private SalesReportScreen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -151,10 +162,8 @@ public class SalesReportScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SalesReportScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SalesReportScreen().setVisible(true);
         });
     }
 

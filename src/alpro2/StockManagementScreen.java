@@ -10,11 +10,22 @@ package alpro2;
  */
 public class StockManagementScreen extends javax.swing.JFrame {
 
+    private int id;
+    private String username;
     /**
      * Creates new form StockManagementScreen
+     * @param id
+     * @param username
      */
-    public StockManagementScreen() {
+    public StockManagementScreen(int id, String username) {
+        this.id = id;
+        this.username = username;
+        
         initComponents();
+    }
+
+    private StockManagementScreen() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -70,10 +81,8 @@ public class StockManagementScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StockManagementScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new StockManagementScreen().setVisible(true);
         });
     }
 

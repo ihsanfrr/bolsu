@@ -316,7 +316,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
            
                 if (rs.next()) 
                 {
-                   HomeScreen hs = new HomeScreen();
+                    int id = rs.getInt(1);
+                    
+                    HomeScreen hs = new HomeScreen(id, un);
                     hs.setVisible(true);
                     setVisible(false); 
                 }
@@ -389,7 +391,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
            
                 if (rs.next()) 
                 {
-                   HomeScreen hs = new HomeScreen();
+                    int id = rs.getInt(1);
+                    
+                    HomeScreen hs = new HomeScreen(id, un);
                     hs.setVisible(true);
                     setVisible(false);  
                 }
