@@ -4,11 +4,21 @@
  */
 package alpro2;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ihsanfrr
  */
 public class StockManagementScreen extends javax.swing.JFrame {
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     private int id;
     private String username;
@@ -22,6 +32,7 @@ public class StockManagementScreen extends javax.swing.JFrame {
         this.username = username;
         
         initComponents();
+        initProducts();
     }
 
     private StockManagementScreen() {
@@ -37,21 +48,180 @@ public class StockManagementScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        productTable = new javax.swing.JTable();
+        TFid = new javax.swing.JTextField();
+        updateButton = new javax.swing.JButton();
+        TFname = new javax.swing.JTextField();
+        TFstock = new javax.swing.JTextField();
+        TFprice = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/back-arrow.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        productTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nama", "Harga", "Stok"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        productTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(productTable);
+
+        TFid.setEnabled(false);
+
+        updateButton.setText("Update Stok");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        TFname.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TFstock, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TFid, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TFname)
+                    .addComponent(TFprice)
+                    .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TFprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TFstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initProducts() {
+        con = Database.connect();
+        
+        try {
+            productTable.setModel(new DefaultTableModel(null, new String[]{"ID", "Nama", "Harga", "Stok"}));
+            
+            pst = con.prepareStatement("SELECT * FROM products");
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                int price = rs.getInt(3);
+                int stock = rs.getInt(4);
+                
+                String tbData[] = {String.valueOf(id), name, String.valueOf(price), String.valueOf(stock)};
+                DefaultTableModel tblModel = (DefaultTableModel)productTable.getModel();
+                
+                tblModel.addRow(tbData);
+            }
+            
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
+    
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        con = Database.connect();
+        
+        try {
+            pst = con.prepareStatement("UPDATE `products` SET `price`= ?, `stock`= ? WHERE id = ?");
+            pst.setInt(1, Integer.parseInt(TFprice.getText()));
+            pst.setInt(2, Integer.parseInt(TFstock.getText()));
+            pst.setInt(3, Integer.parseInt(TFid.getText()));
+            pst.execute();
+            
+            initProducts();
+            clear();
+            
+            con.close();
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void clear() {
+        TFid.setText("");
+        TFname.setText("");
+        TFprice.setText("");
+        TFstock.setText("");
+    }
+    
+    private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
+        DefaultTableModel tblModel = (DefaultTableModel)productTable.getModel();
+        
+        String id = tblModel.getValueAt(productTable.getSelectedRow(), 0).toString();
+        String name = tblModel.getValueAt(productTable.getSelectedRow(), 1).toString();
+        String price = tblModel.getValueAt(productTable.getSelectedRow(), 2).toString();
+        String stock = tblModel.getValueAt(productTable.getSelectedRow(), 3).toString();
+        
+        if(TFid.getText().equals(id)) {
+            clear();
+        } else {
+            TFid.setText(id);
+            TFname.setText(name);
+            TFprice.setText(price);
+            TFstock.setText(stock);
+        }
+    }//GEN-LAST:event_productTableMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        HomeScreen hs = new HomeScreen(id, username);
+        hs.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -87,5 +257,13 @@ public class StockManagementScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TFid;
+    private javax.swing.JTextField TFname;
+    private javax.swing.JTextField TFprice;
+    private javax.swing.JTextField TFstock;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable productTable;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 04, 2023 at 07:04 AM
+-- Generation Time: Jul 15, 2023 at 11:54 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -30,10 +30,12 @@ SET time_zone = "+00:00";
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `buyer_name` varchar(255) NOT NULL,
+  `buyer_telp` varchar(255) NOT NULL,
+  `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `total_amount` int(11) NOT NULL,
   `status` enum('proses','selesai') NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -73,8 +75,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `stock`, `created_at`, `updated_at`) VALUES
-(1, 'Original', 30000, 10, '2023-07-04 14:02:44', '2023-07-04 14:02:44'),
-(2, 'Black Forest', 35000, 5, '2023-07-04 14:02:44', '2023-07-04 14:02:44');
+(1, 'Strawberry', 25000, 8, '2023-07-04 14:02:44', '2023-07-04 14:02:44'),
+(2, 'Coklat', 35000, 2, '2023-07-04 14:02:44', '2023-07-04 14:02:44'),
+(3, 'Vanila', 35000, 14, '2023-07-04 14:02:44', '2023-07-04 14:02:44');
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin123', 'admin', '2023-07-04 14:00:46', '2023-07-04 07:00:20'),
-(2, 'kasir', 'kasir123', 'kasir', '2023-07-04 14:00:46', '2023-07-04 07:00:20');
+(2, 'kasir', 'kasir123', 'kasir', '2023-07-04 14:00:46', '2023-07-04 07:00:20'),
+(3, 'ihsan', 'ihsan123', 'kasir', '2023-07-16 06:44:35', '2023-07-16 06:44:35');
 
 --
 -- Indexes for dumped tables
@@ -108,15 +112,15 @@ INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`, `update
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`);
+  ADD KEY `userid` (`user_id`);
 
 --
 -- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `order_id` (`order_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`);
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `products`
@@ -138,25 +142,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -166,14 +170,14 @@ ALTER TABLE `users`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `userid` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

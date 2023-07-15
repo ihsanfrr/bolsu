@@ -8,6 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -59,7 +64,6 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        TFC = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         TFV = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -75,6 +79,7 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        TFC = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,16 +128,6 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/1.png"))); // NOI18N
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Strawberry1.png"))); // NOI18N
-
-        TFC.setEditable(false);
-        TFC.setBackground(new java.awt.Color(0, 191, 115));
-        TFC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        TFC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        TFC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFCActionPerformed(evt);
-            }
-        });
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Chocolate Bar.png"))); // NOI18N
 
@@ -250,6 +245,15 @@ public class ProductOrder extends javax.swing.JFrame {
             }
         });
 
+        TFC.setBackground(new java.awt.Color(0, 191, 115));
+        TFC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        TFC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -267,9 +271,9 @@ public class ProductOrder extends javax.swing.JFrame {
                                         .addComponent(jLabel12))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(TFC, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(TFS, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(TFV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(TFV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TFC)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -318,8 +322,8 @@ public class ProductOrder extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(TFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TFC, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
                         .addComponent(TFV))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel12)
@@ -343,39 +347,113 @@ public class ProductOrder extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelActionPerformed
+    private void clear() {
         TFID.setText(null);
         TFName.setText(null);
         TFNo.setText(null);
         TFS.setText(null);
         TFV.setText(null);
-        TFC.setText(null);// TODO add your handling code here:
+        TFC.setText(null);
+    }
+    
+    private void BCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelActionPerformed
+        clear();
     }//GEN-LAST:event_BCancelActionPerformed
 
     private void BSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSimpanActionPerformed
-//        try {
-//            PreparedStatement statement = conn.prepareStatement("INSERT INTO order_details (order_id, product_id, quantity, subtotal, created_at, update_at)values (?, ?, ?, ?, ?, ?)");
-//            statement.setNull(1, Integer.parseInt(TFID.getText()));
-//            statement.setString(2, TFName.getText());
-//            statement.setInt(3, Integer.parseInt(jTextField3.getText()));
-//            statement.setInt(4, Integer.parseInt(jTextField4.getText()));
-//            statement.executeUpdate();
-//            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan", "Selamat!", JOptionPane.INFORMATION_MESSAGE);
-//            Clear();
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FormUtama.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        // TODO add your handling code here:
+        try {
+            con = Database.connect();
+            
+            pst = con.prepareStatement("SELECT * FROM products");
+            rs = pst.executeQuery();
+            List<String[]> dataList = new ArrayList<>();
+            
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int price = rs.getInt("price");
+                int stock = rs.getInt("stock");
+
+                String[] data = {String.valueOf(id), name, String.valueOf(price), String.valueOf(stock)};
+                dataList.add(data);
+            }
+            
+            boolean stockAvailable = false;
+            if(Integer.parseInt(dataList.get(0)[3]) >= Integer.parseInt(TFS.getText()) && Integer.parseInt(dataList.get(1)[3]) >= Integer.parseInt(TFC.getText()) && Integer.parseInt(dataList.get(2)[3]) >= Integer.parseInt(TFV.getText())){
+                stockAvailable = true;
+            }
+            
+            if(stockAvailable) {
+                System.out.println("Stok ada");
+                int subTotalStrawberry = (Integer.parseInt(dataList.get(0)[2])*Integer.parseInt(TFS.getText()));
+                int subTotalCoklat = (Integer.parseInt(dataList.get(1)[2])*Integer.parseInt(TFC.getText()));
+                int subTotalVanila = (Integer.parseInt(dataList.get(2)[2])*Integer.parseInt(TFV.getText()));
+                
+                int totalAmount = subTotalStrawberry + subTotalCoklat + subTotalVanila;
+                Date now = new Date();
+                Timestamp orderDate = new Timestamp(now.getTime());
+                
+                pst = con.prepareStatement("INSERT INTO `orders`(`id`, `user_id`, `buyer_name`, `buyer_telp`, `order_date`, `total_amount`, `status`, `created_at`, `updated_at`) VALUES (?,?,?,?,?,?,?,?,?)");
+                pst.setNull(1, java.sql.Types.NULL);
+                pst.setInt(2, id);
+                pst.setString(3, TFName.getText());
+                pst.setString(4, TFNo.getText());
+                pst.setTimestamp(5, orderDate);
+                pst.setInt(6, totalAmount);
+                pst.setString(7, "selesai");
+                pst.setTimestamp(8, orderDate);
+                pst.setNull(9, java.sql.Types.NULL);
+                pst.execute();
+                
+                pst = con.prepareStatement("SELECT * FROM orders ORDER BY order_date DESC LIMIT 1");
+                rs = pst.executeQuery();
+                
+                if(rs.next()) {
+                    int order_id = rs.getInt("id");
+                    
+                    List<Integer> purchaseStocks = new ArrayList<>();
+                    purchaseStocks.add(Integer.valueOf(TFS.getText()));
+                    purchaseStocks.add(Integer.valueOf(TFC.getText()));
+                    purchaseStocks.add(Integer.valueOf(TFV.getText()));
+        
+                    for (int i = 0; i < purchaseStocks.size(); i++) {
+                        pst = con.prepareStatement("INSERT INTO `order_details`(`id`, `order_id`, `product_id`, `quantity`, `subtotal`, `created_at`, `updated_at`) VALUES (?,?,?,?,?,?,?)");
+                        pst.setNull(1, java.sql.Types.NULL);
+                        pst.setInt(2, order_id);
+                        pst.setInt(3, (i+1));
+                        pst.setInt(4, purchaseStocks.get(i));
+                        pst.setInt(5, (i+1) == 1 ? subTotalStrawberry : (i+1) == 2 ? subTotalCoklat : subTotalVanila);
+                        pst.setTimestamp(6, orderDate);
+                        pst.setNull(7, java.sql.Types.NULL);
+                        pst.execute();
+
+                        if(purchaseStocks.get(i) > 0) {
+                            int remainingStock = Integer.valueOf(dataList.get(i)[3]) - purchaseStocks.get(i);
+                            pst = con.prepareStatement("UPDATE `products` SET `stock`= ? WHERE id = ?");
+                            pst.setInt(1, remainingStock);
+                            pst.setInt(2, (i+1));
+                            pst.execute();
+                        }
+                    }
+                }
+                
+                pst.close();
+                con.close();
+                
+                clear();
+                JOptionPane.showMessageDialog(rootPane, "Transaksi Berhasil!"); 
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Beberapa Stok Tidak Tersedia!"); 
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex); 
+        }
     }//GEN-LAST:event_BSimpanActionPerformed
 
     private void TFVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TFVActionPerformed
-
-    private void TFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFCActionPerformed
 
     private void TFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFSActionPerformed
         // TODO add your handling code here:
@@ -398,6 +476,10 @@ public class ProductOrder extends javax.swing.JFrame {
         hs.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void TFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFCActionPerformed
 
     /**
      * @param args the command line arguments

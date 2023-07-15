@@ -4,12 +4,24 @@
  */
 package alpro2;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
 /**
  *
  * @author ihsanfrr
  */
 public class OrderHistoryScreen extends javax.swing.JFrame {
-
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    
     private int id;
     private String username;
     /**
@@ -22,6 +34,7 @@ public class OrderHistoryScreen extends javax.swing.JFrame {
         this.username = username;
         
         initComponents();
+        initOrderHistory();
     }
 
     private OrderHistoryScreen() {
@@ -37,22 +50,115 @@ public class OrderHistoryScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        historyTable = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/back-arrow.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        historyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nama", "Telp", "Strawberry", "Coklat", "Vanila", "Pembelian", "Status", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(historyTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        HomeScreen hs = new HomeScreen(id, username);
+        hs.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void initOrderHistory() {
+        con = Database.connect();
+        
+        try {
+            historyTable.setModel(new DefaultTableModel(null, new String[]{"ID", "Nama", "Telp", "Strawberry", "Coklat", "Vanila", "Pembelian", "Status", "Total"}));
+            
+            pst = con.prepareStatement("SELECT o.id AS order_id, o.user_id, o.buyer_name, o.buyer_telp, o.order_date, o.total_amount, o.status, JSON_ARRAYAGG( JSON_OBJECT( 'order_detail_id', od.id, 'product_id', od.product_id, 'quantity', od.quantity, 'subtotal', od.subtotal ) ) AS order_details FROM orders o JOIN order_details od ON o.id = od.order_id WHERE o.user_id = ? GROUP BY o.id;");
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(3);
+                String telp = rs.getString(4);
+                String orderDate = rs.getString(5);
+                int total = rs.getInt(6);
+                String status = rs.getString(7);
+                
+                String orderDetailsJson = rs.getString(8);
+                JSONArray orderDetailsArray = new JSONArray(orderDetailsJson);
+                
+                JSONObject strawberryObject = orderDetailsArray.getJSONObject(0);
+                int strawberry = strawberryObject.getInt("quantity");
+                
+                JSONObject coklatObject = orderDetailsArray.getJSONObject(1);
+                int coklat = coklatObject.getInt("quantity");
+                
+                JSONObject vanilaObject = orderDetailsArray.getJSONObject(2);
+                int vanila = vanilaObject.getInt("quantity");
+
+                String tbData[] = {String.valueOf(id), name, telp, String.valueOf(strawberry), String.valueOf(coklat), String.valueOf(vanila), orderDate, status, String.valueOf(total)};
+                DefaultTableModel tblModel = (DefaultTableModel)historyTable.getModel();
+               
+                tblModel.addRow(tbData);
+            }
+            
+            con.close();
+        } catch (SQLException ex) {
+            
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -87,5 +193,8 @@ public class OrderHistoryScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable historyTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

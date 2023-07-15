@@ -28,6 +28,9 @@ public class HomeScreen extends javax.swing.JFrame {
         initComponents();
         
         greetingText.setText("Halo "+username+"!");
+        if(id != 1) {
+            salesReport.setEnabled(false);
+        }
     }
 
     private HomeScreen() {
@@ -49,6 +52,7 @@ public class HomeScreen extends javax.swing.JFrame {
         manageStock = new javax.swing.JButton();
         orderHistory = new javax.swing.JButton();
         salesReport = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +61,6 @@ public class HomeScreen extends javax.swing.JFrame {
 
         jLabel2.setText("Selamat menjalankan tugas Anda dengan baik!");
 
-        orderProduct.setBackground(new java.awt.Color(0, 191, 115));
         orderProduct.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         orderProduct.setText("Order Produk");
         orderProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +69,6 @@ public class HomeScreen extends javax.swing.JFrame {
             }
         });
 
-        manageStock.setBackground(new java.awt.Color(0, 191, 115));
         manageStock.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         manageStock.setText("Kelola Stok");
         manageStock.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +77,6 @@ public class HomeScreen extends javax.swing.JFrame {
             }
         });
 
-        orderHistory.setBackground(new java.awt.Color(0, 191, 115));
         orderHistory.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         orderHistory.setText("Riwayat Penjualan");
         orderHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -84,12 +85,19 @@ public class HomeScreen extends javax.swing.JFrame {
             }
         });
 
-        salesReport.setBackground(new java.awt.Color(0, 191, 115));
         salesReport.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         salesReport.setText("Laporan Penjualan");
         salesReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salesReportActionPerformed(evt);
+            }
+        });
+
+        logout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        logout.setText("Keluar");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
             }
         });
 
@@ -100,7 +108,10 @@ public class HomeScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(salesReport)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(salesReport)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(logout))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(orderProduct)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -124,7 +135,9 @@ public class HomeScreen extends javax.swing.JFrame {
                     .addComponent(manageStock)
                     .addComponent(orderHistory))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(salesReport)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salesReport)
+                    .addComponent(logout))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
 
@@ -155,6 +168,12 @@ public class HomeScreen extends javax.swing.JFrame {
         sp.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_salesReportActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        AuthenticationScreen as = new AuthenticationScreen();
+        as.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +211,7 @@ public class HomeScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel greetingText;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton logout;
     private javax.swing.JButton manageStock;
     private javax.swing.JButton orderHistory;
     private javax.swing.JButton orderProduct;
