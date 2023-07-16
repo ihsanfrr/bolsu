@@ -82,11 +82,14 @@ public class ProductOrder extends javax.swing.JFrame {
         TFC = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(830, 456));
 
         jPanel1.setBackground(new java.awt.Color(0, 191, 115));
+        jPanel1.setPreferredSize(new java.awt.Dimension(830, 456));
 
         TFNo.setBackground(new java.awt.Color(0, 191, 115));
-        TFNo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFNo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TFNo.setForeground(new java.awt.Color(255, 255, 255));
         TFNo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +100,8 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Number Pad.png"))); // NOI18N
 
         TFS.setBackground(new java.awt.Color(0, 191, 115));
-        TFS.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFS.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TFS.setForeground(new java.awt.Color(255, 255, 255));
         TFS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +110,8 @@ public class ProductOrder extends javax.swing.JFrame {
         });
 
         TFID.setBackground(new java.awt.Color(0, 191, 115));
-        TFID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFID.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TFID.setForeground(new java.awt.Color(255, 255, 255));
         TFID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +120,8 @@ public class ProductOrder extends javax.swing.JFrame {
         });
 
         TFName.setBackground(new java.awt.Color(0, 191, 115));
-        TFName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFName.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TFName.setForeground(new java.awt.Color(255, 255, 255));
         TFName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +138,8 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Chocolate Bar.png"))); // NOI18N
 
         TFV.setBackground(new java.awt.Color(0, 191, 115));
-        TFV.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFV.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TFV.setForeground(new java.awt.Color(255, 255, 255));
         TFV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,11 +154,11 @@ public class ProductOrder extends javax.swing.JFrame {
         jLabel7.setText("Variant");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(319, 456));
 
         BSimpan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BSimpan.setText("Simpan");
         BSimpan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        BSimpan.setContentAreaFilled(false);
         BSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSimpanActionPerformed(evt);
@@ -161,7 +168,6 @@ public class ProductOrder extends javax.swing.JFrame {
         BCancel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BCancel.setText("Cancel");
         BCancel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        BCancel.setContentAreaFilled(false);
         BCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BCancelActionPerformed(evt);
@@ -171,7 +177,6 @@ public class ProductOrder extends javax.swing.JFrame {
         BCetak.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BCetak.setText("Cetak");
         BCetak.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        BCetak.setContentAreaFilled(false);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Bola Susu Aima");
@@ -192,7 +197,7 @@ public class ProductOrder extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
@@ -246,7 +251,8 @@ public class ProductOrder extends javax.swing.JFrame {
         });
 
         TFC.setBackground(new java.awt.Color(0, 191, 115));
-        TFC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TFC.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        TFC.setForeground(new java.awt.Color(255, 255, 255));
         TFC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         TFC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,7 +267,7 @@ public class ProductOrder extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 63, Short.MAX_VALUE)
+                        .addGap(0, 100, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -289,11 +295,11 @@ public class ProductOrder extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(107, 107, 107)))
-                        .addGap(65, 65, 65))
+                        .addGap(49, 49, 49))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,10 +315,10 @@ public class ProductOrder extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(TFName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TFNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(TFNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -329,19 +335,19 @@ public class ProductOrder extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)))
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
         );
 
         pack();

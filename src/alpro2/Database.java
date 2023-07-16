@@ -19,10 +19,10 @@ public class Database {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
-            String mysqlURL = "jdbc:mysql://localhost:8889/bolsu_db?zeroDateTimeBehavior=CONVERT_TO_NULL";
+            String mysqlURL = "jdbc:mysql://localhost:3306/bolsu_db?zeroDateTimeBehavior=CONVERT_TO_NULL";
             
             // Catatan untuk windows default username="root" dan password=""
-            conn = (Connection) DriverManager.getConnection(mysqlURL, "root", "root");
+            conn = (Connection) DriverManager.getConnection(mysqlURL, "root", "");
         } catch(ClassNotFoundException | SQLException e) {
             System.out.println(e.toString());
         }

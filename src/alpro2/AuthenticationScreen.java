@@ -70,11 +70,9 @@ public class AuthenticationScreen extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Cake.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Bola Susu Aima");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Management App");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon/Bread Crumbs.png"))); // NOI18N
