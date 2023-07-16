@@ -4,11 +4,13 @@
  */
 package alpro2;
 
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,6 +34,8 @@ public class StockManagementScreen extends javax.swing.JFrame {
         this.username = username;
         
         initComponents();
+        Image icon = new ImageIcon(this.getClass().getResource("/assets/icon/Apples_Plate.png")).getImage();
+        this.setIconImage(icon);
         initProducts();
     }
 

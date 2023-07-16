@@ -4,6 +4,7 @@
  */
 package alpro2;
 
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -30,8 +31,8 @@ public class AuthenticationScreen extends javax.swing.JFrame {
      */
     public AuthenticationScreen() {
         initComponents();
-        ImageIcon img = new ImageIcon("C:\\Users\\Adit\\Desktop\\javasql\\bolsu\\src\\assets\\icon/Apples_Plate.png");
-        this.setIconImage(img.getImage());
+        Image icon = new ImageIcon(this.getClass().getResource("/assets/icon/Apples_Plate.png")).getImage();
+        this.setIconImage(icon);
         con = Database.connect();
         
     

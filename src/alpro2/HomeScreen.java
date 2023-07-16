@@ -4,6 +4,9 @@
  */
 package alpro2;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
 
@@ -26,7 +29,8 @@ public class HomeScreen extends javax.swing.JFrame {
         this.username = username;
         
         initComponents();
-        
+        Image icon = new ImageIcon(this.getClass().getResource("/assets/icon/Apples_Plate.png")).getImage();
+        this.setIconImage(icon);
         greetingText.setText("Halo "+username+"!");
         if(id != 1) {
             salesReport.setEnabled(false);
